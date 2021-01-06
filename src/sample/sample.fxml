@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane layoutY="85.0" prefHeight="315.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Button fx:id="first_button" layoutX="125.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #2E3348;" text="Кнопка" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="first_date" layoutX="64.0" layoutY="34.0" prefHeight="25.0" prefWidth="194.0" promptText="дата с _ _._ _._ _ _ _" />
+            <TextField fx:id="second_date" layoutX="64.0" layoutY="78.0" prefHeight="25.0" prefWidth="194.0" promptText="дата по _ _._ _._ _ _ _" />
+            <TextField fx:id="first_date_compression_start" layoutX="399.0" layoutY="10.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end" layoutX="497.0" layoutY="10.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_start1" layoutX="399.0" layoutY="38.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end1" layoutX="497.0" layoutY="38.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_end2" layoutX="497.0" layoutY="65.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_start2" layoutX="399.0" layoutY="65.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_start3" layoutX="399.0" layoutY="92.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_start4" layoutX="399.0" layoutY="120.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end5" layoutX="497.0" layoutY="147.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_end3" layoutX="497.0" layoutY="92.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_end4" layoutX="497.0" layoutY="120.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_start5" layoutX="399.0" layoutY="147.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_start6" layoutX="399.0" layoutY="175.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end6" layoutX="497.0" layoutY="175.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <Button fx:id="second_button" layoutX="601.0" layoutY="117.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #2E3348;" text="Кнопка" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="first_date_compression_start7" layoutX="399.0" layoutY="203.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end7" layoutX="497.0" layoutY="203.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_start8" layoutX="399.0" layoutY="231.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end8" layoutX="497.0" layoutY="231.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <Label layoutX="7.0" layoutY="294.0" prefHeight="18.0" prefWidth="75.0" style="-fx-background-color: #fafafa;" text="\@VaSeBa" textFill="#06011b">
+               <font>
+                  <Font name="Segoe UI Black Italic" size="9.0" />
+               </font>
+            </Label>
+            <Label fx:id="first_result" layoutX="125.0" layoutY="201.0" prefHeight="47.0" prefWidth="117.0" text="Result" textAlignment="CENTER" textFill="#222020">
+               <font>
+                  <Font name="Segoe UI Black Italic" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="second_result" layoutX="431.0" layoutY="266.0" prefHeight="35.0" prefWidth="139.0" text="Result" textAlignment="CENTER" textFill="#222020">
+               <font>
+                  <Font name="Segoe UI Black Italic" size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <Label layoutX="39.0" layoutY="14.0" prefHeight="60.0" prefWidth="236.0" text="Остаток отпуска" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="403.0" layoutY="14.0" prefHeight="60.0" prefWidth="236.0" text="Расчет стажа" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black Italic" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
