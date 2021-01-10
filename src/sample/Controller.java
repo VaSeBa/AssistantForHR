@@ -1,5 +1,12 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
 import java.math.BigDecimal;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -7,16 +14,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import sun.text.resources.el.CollationData_el;
+
 
 public class Controller {
     public static long DAYS = 0;
@@ -157,6 +157,9 @@ public class Controller {
     private Label second_result8;
 
     @FXML
+    private JFXButton clockBtn;
+
+    @FXML
     void initialize() {
 
         first_button.setOnAction(event -> {
@@ -226,8 +229,6 @@ public class Controller {
                 DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
                 result_sum.setText(DAYS + " д.");
             }
-
-
 
             workExperience(formatter, box, first_date_compression_start, first_date_compression_end, second_result);
             workExperience(formatter, box1, first_date_compression_start1, first_date_compression_end1, second_result1);
