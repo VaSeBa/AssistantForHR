@@ -2,11 +2,18 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import sample.calc2.DigitalWatch;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -15,14 +22,16 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.List;
 
 
 public class Controller {
-    public static long DAYS = 0;
 
     @FXML
-    private ResourceBundle resources;
+    private JFXButton clockBtn;
+
+    @FXML
+    private ImageView calc;
 
     @FXML
     private URL location;
@@ -157,17 +166,39 @@ public class Controller {
     private Label second_result8;
 
     @FXML
-    private JFXButton clockBtn;
+    private Button calc_button;
+
+    private static long DAYS = 0;
+    private static long day = 0;
+    private static long muns = 0;
+    private static long year = 0;
+    private List<Period> periodList;
 
     @FXML
     void initialize() {
+
+
+        calc_button.setOnAction(event -> {
+//            calc_button.getScene().getWindow().getOnHidden();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/calc2/calcFX.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
 
         first_button.setOnAction(event -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             LocalDate firstDate = LocalDate.parse(first_date.getText(), formatter);
             LocalDate secondDate = LocalDate.parse(second_date.getText(), formatter);
             long day = ChronoUnit.DAYS.between(firstDate, secondDate);
-            double dayLeaving = day / 30.4166666666d * 2.33333333333d;
+            double dayLeaving = day / 9d;
             BigDecimal dayLeavingBig = new BigDecimal(dayLeaving);
             first_result.setText(dayLeavingBig.setScale(1, BigDecimal.ROUND_CEILING) + " ");
         });
@@ -178,56 +209,262 @@ public class Controller {
             if (box.isSelected()) {
                 LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
                 LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
-                DAYS = ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+//                DAYS = ChronoUnit.DAYS.between(firstDate, secondDate);
+//                result_sum.setText(DAYS + " д.");
+                Period period = Period.between(firstDate, secondDate);
+
+                result_sum.setText(period.getDays() + " д. " + period.getMonths() + " м. " + period.getYears() + " л. ");
+
+//                for (day = 0, muns = 0, year = 0; DAYS > 30; DAYS = DAYS - 30) {
+//                    day = DAYS - 30;
+//                    muns++;
+//                    if (muns == 12) {
+//                        year++;
+//                        muns = 0;
+//                    }
+//                }
+//
+//                result_sum.setText(day + " d. " + muns + " m. " + year + " y." );
             }
+
             if (box1.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start1.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end1.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+//                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
+//                result_sum.setText(DAYS + " д.");
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period total = period.plus(period1);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+
+//                result_sum.setText(period.plus(period1).getDays() + " д. " + period.plus(period1).getMonths() + " м. " + period.plus(period1).getYears() + " л. ");
+
+//                result_sum.setText(day + " d. " + muns + " m. " + year + " y." );
             }
+
             if (box2.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start2.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end2.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+                LocalDate firstDate2 = LocalDate.parse(first_date_compression_start2.getText(), formatter);
+                LocalDate secondDate2 = LocalDate.parse(first_date_compression_end2.getText(), formatter);
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period period2 = Period.between(firstDate2, secondDate2);
+                Period total = period.plus(period1).plus(period2);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+
+
+
+//                result_sum.setText(period.plus(period1).plus(period2).getDays() +
+//                        " д. " + period.plus(period1).plus(period2).getMonths() +
+//                        " м. " + period.plus(period1).plus(period2).getYears() + " л. ");
+
+
+//                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
+//                result_sum.setText(DAYS + " д.");
             }
+
             if (box3.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start3.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end3.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+                LocalDate firstDate2 = LocalDate.parse(first_date_compression_start2.getText(), formatter);
+                LocalDate secondDate2 = LocalDate.parse(first_date_compression_end2.getText(), formatter);
+                LocalDate firstDate3 = LocalDate.parse(first_date_compression_start3.getText(), formatter);
+                LocalDate secondDate3 = LocalDate.parse(first_date_compression_end3.getText(), formatter);
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period period2 = Period.between(firstDate2, secondDate2);
+                Period period3 = Period.between(firstDate3, secondDate3);
+
+                Period total = period.plus(period1).plus(period2).plus(period3);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+
+
+
+//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).getDays() +
+//                        " д. " + period.plus(period1).plus(period2).plus(period3).getMonths() +
+//                        " м. " + period.plus(period1).plus(period2).plus(period3).getYears() + " л. ");
             }
+
             if (box4.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start4.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end4.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+                LocalDate firstDate2 = LocalDate.parse(first_date_compression_start2.getText(), formatter);
+                LocalDate secondDate2 = LocalDate.parse(first_date_compression_end2.getText(), formatter);
+                LocalDate firstDate3 = LocalDate.parse(first_date_compression_start3.getText(), formatter);
+                LocalDate secondDate3 = LocalDate.parse(first_date_compression_end3.getText(), formatter);
+                LocalDate firstDate4 = LocalDate.parse(first_date_compression_start4.getText(), formatter);
+                LocalDate secondDate4 = LocalDate.parse(first_date_compression_end4.getText(), formatter);
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period period2 = Period.between(firstDate2, secondDate2);
+                Period period3 = Period.between(firstDate3, secondDate3);
+                Period period4 = Period.between(firstDate4, secondDate4);
+
+                Period total = period.plus(period1).plus(period2).plus(period3).plus(period4);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+
+//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).getDays() +
+//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).getMonths() +
+//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).getYears() + " л. ");
             }
+
             if (box5.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start5.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end5.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+                LocalDate firstDate2 = LocalDate.parse(first_date_compression_start2.getText(), formatter);
+                LocalDate secondDate2 = LocalDate.parse(first_date_compression_end2.getText(), formatter);
+                LocalDate firstDate3 = LocalDate.parse(first_date_compression_start3.getText(), formatter);
+                LocalDate secondDate3 = LocalDate.parse(first_date_compression_end3.getText(), formatter);
+                LocalDate firstDate4 = LocalDate.parse(first_date_compression_start4.getText(), formatter);
+                LocalDate secondDate4 = LocalDate.parse(first_date_compression_end4.getText(), formatter);
+                LocalDate firstDate5 = LocalDate.parse(first_date_compression_start5.getText(), formatter);
+                LocalDate secondDate5 = LocalDate.parse(first_date_compression_end5.getText(), formatter);
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period period2 = Period.between(firstDate2, secondDate2);
+                Period period3 = Period.between(firstDate3, secondDate3);
+                Period period4 = Period.between(firstDate4, secondDate4);
+                Period period5 = Period.between(firstDate5, secondDate5);
+
+                Period total = period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+
+//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).getDays() +
+//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).getMonths() +
+//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).getYears() + " л. ");
             }
+
             if (box6.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start6.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end6.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+                LocalDate firstDate2 = LocalDate.parse(first_date_compression_start2.getText(), formatter);
+                LocalDate secondDate2 = LocalDate.parse(first_date_compression_end2.getText(), formatter);
+                LocalDate firstDate3 = LocalDate.parse(first_date_compression_start3.getText(), formatter);
+                LocalDate secondDate3 = LocalDate.parse(first_date_compression_end3.getText(), formatter);
+                LocalDate firstDate4 = LocalDate.parse(first_date_compression_start4.getText(), formatter);
+                LocalDate secondDate4 = LocalDate.parse(first_date_compression_end4.getText(), formatter);
+                LocalDate firstDate5 = LocalDate.parse(first_date_compression_start5.getText(), formatter);
+                LocalDate secondDate5 = LocalDate.parse(first_date_compression_end5.getText(), formatter);
+                LocalDate firstDate6 = LocalDate.parse(first_date_compression_start6.getText(), formatter);
+                LocalDate secondDate6 = LocalDate.parse(first_date_compression_end6.getText(), formatter);
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period period2 = Period.between(firstDate2, secondDate2);
+                Period period3 = Period.between(firstDate3, secondDate3);
+                Period period4 = Period.between(firstDate4, secondDate4);
+                Period period5 = Period.between(firstDate5, secondDate5);
+                Period period6 = Period.between(firstDate6, secondDate6);
+                Period total = period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).getDays() +
+//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).getMonths() +
+//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).getYears() + " л. ");
             }
+
             if (box7.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start7.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end7.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+                LocalDate firstDate2 = LocalDate.parse(first_date_compression_start2.getText(), formatter);
+                LocalDate secondDate2 = LocalDate.parse(first_date_compression_end2.getText(), formatter);
+                LocalDate firstDate3 = LocalDate.parse(first_date_compression_start3.getText(), formatter);
+                LocalDate secondDate3 = LocalDate.parse(first_date_compression_end3.getText(), formatter);
+                LocalDate firstDate4 = LocalDate.parse(first_date_compression_start4.getText(), formatter);
+                LocalDate secondDate4 = LocalDate.parse(first_date_compression_end4.getText(), formatter);
+                LocalDate firstDate5 = LocalDate.parse(first_date_compression_start5.getText(), formatter);
+                LocalDate secondDate5 = LocalDate.parse(first_date_compression_end5.getText(), formatter);
+                LocalDate firstDate6 = LocalDate.parse(first_date_compression_start6.getText(), formatter);
+                LocalDate secondDate6 = LocalDate.parse(first_date_compression_end6.getText(), formatter);
+                LocalDate firstDate7 = LocalDate.parse(first_date_compression_start7.getText(), formatter);
+                LocalDate secondDate7 = LocalDate.parse(first_date_compression_end7.getText(), formatter);
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period period2 = Period.between(firstDate2, secondDate2);
+                Period period3 = Period.between(firstDate3, secondDate3);
+                Period period4 = Period.between(firstDate4, secondDate4);
+                Period period5 = Period.between(firstDate5, secondDate5);
+                Period period6 = Period.between(firstDate6, secondDate6);
+                Period period7 = Period.between(firstDate7, secondDate7);
+                Period total = period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+
+//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).getDays() +
+//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).getMonths() +
+//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).getYears() + " л. ");
             }
+
             if (box8.isSelected()) {
-                LocalDate firstDate = LocalDate.parse(first_date_compression_start8.getText(), formatter);
-                LocalDate secondDate = LocalDate.parse(first_date_compression_end8.getText(), formatter);
-                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-                result_sum.setText(DAYS + " д.");
+                LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
+                LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
+                LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
+                LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
+                LocalDate firstDate2 = LocalDate.parse(first_date_compression_start2.getText(), formatter);
+                LocalDate secondDate2 = LocalDate.parse(first_date_compression_end2.getText(), formatter);
+                LocalDate firstDate3 = LocalDate.parse(first_date_compression_start3.getText(), formatter);
+                LocalDate secondDate3 = LocalDate.parse(first_date_compression_end3.getText(), formatter);
+                LocalDate firstDate4 = LocalDate.parse(first_date_compression_start4.getText(), formatter);
+                LocalDate secondDate4 = LocalDate.parse(first_date_compression_end4.getText(), formatter);
+                LocalDate firstDate5 = LocalDate.parse(first_date_compression_start5.getText(), formatter);
+                LocalDate secondDate5 = LocalDate.parse(first_date_compression_end5.getText(), formatter);
+                LocalDate firstDate6 = LocalDate.parse(first_date_compression_start6.getText(), formatter);
+                LocalDate secondDate6 = LocalDate.parse(first_date_compression_end6.getText(), formatter);
+                LocalDate firstDate7 = LocalDate.parse(first_date_compression_start7.getText(), formatter);
+                LocalDate secondDate7 = LocalDate.parse(first_date_compression_end7.getText(), formatter);
+                LocalDate firstDate8 = LocalDate.parse(first_date_compression_start8.getText(), formatter);
+                LocalDate secondDate8 = LocalDate.parse(first_date_compression_end8.getText(), formatter);
+                Period period = Period.between(firstDate, secondDate);
+                Period period1 = Period.between(firstDate1, secondDate1);
+                Period period2 = Period.between(firstDate2, secondDate2);
+                Period period3 = Period.between(firstDate3, secondDate3);
+                Period period4 = Period.between(firstDate4, secondDate4);
+                Period period5 = Period.between(firstDate5, secondDate5);
+                Period period6 = Period.between(firstDate6, secondDate6);
+                Period period7 = Period.between(firstDate7, secondDate7);
+                Period period8 = Period.between(firstDate8, secondDate8);
+                Period total = period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).plus(period8);
+                LocalDate today = LocalDate.now();
+                today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
+                total = LocalDate.now().until(today);
+                result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
+
+//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).plus(period8).getDays() +
+//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).plus(period8).getMonths() +
+//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).plus(period8).getYears() + " л. ");
             }
 
             workExperience(formatter, box, first_date_compression_start, first_date_compression_end, second_result);
@@ -240,14 +477,16 @@ public class Controller {
             workExperience(formatter, box7, first_date_compression_start7, first_date_compression_end7, second_result7);
             workExperience(formatter, box8, first_date_compression_start8, first_date_compression_end8, second_result8);
 
+
         });
 
-
+        new DigitalWatch(clockBtn);
         Date date = new Date();
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         time.setText(format1.format(date));
 
     }
+
 
     private void workExperience (DateTimeFormatter formatter, CheckBox box1, TextField first_date_compression_start1, TextField first_date_compression_end1, Label second_result1) {
         if (box1.isSelected()) {
@@ -255,6 +494,7 @@ public class Controller {
             LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
             Period period1 = Period.between(firstDate1, secondDate1);
             second_result1.setText((period1.getDays() + " д. " + period1.getMonths() + " м. " + period1.getYears() + " л. "));
+
         }
     }
 

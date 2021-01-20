@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="254.0" style="-fx-background-color: #2A5058;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.calculator.Calculator">
+    <children>
+      <GridPane layoutY="88.0" prefHeight="312.0" prefWidth="254.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="dzero" prefHeight="60.0" prefWidth="72.0" text="00" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="seven" onAction="#seven_click" prefHeight="60.0" prefWidth="51.0" text="7" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="nine" onAction="#nine_click" prefHeight="60.0" prefWidth="51.0" text="9" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="eight" onAction="#eight_click" prefHeight="60.0" prefWidth="51.0" text="8" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="one" onAction="#one_click" prefHeight="60.0" prefWidth="51.0" text="1" textFill="WHITE" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="six" onAction="#six_click" prefHeight="60.0" prefWidth="51.0" text="6" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="five" onAction="#five_click" prefHeight="60.0" prefWidth="51.0" text="5" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="four" onAction="#four_click" prefHeight="60.0" prefWidth="51.0" text="4" textFill="WHITE" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="three" onAction="#three_click" prefHeight="60.0" prefWidth="51.0" text="3" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="two" onAction="#two_click" prefHeight="60.0" prefWidth="51.0" text="2" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="equal" onAction="#equal_click" prefHeight="60.0" prefWidth="67.0" text="=" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="point" onAction="#point_click" prefHeight="60.0" prefWidth="51.0" text="." textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="zero" onAction="#zero_click" prefHeight="60.0" prefWidth="51.0" text="0" textFill="WHITE" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="multy" onAction="#multy_click" prefHeight="60.0" prefWidth="51.0" text="*" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="kum" onAction="#kum_click" prefHeight="60.0" prefWidth="71.0" text="-" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="ko" onAction="#ko_click" prefHeight="64.0" prefWidth="68.0" text="+" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton prefHeight="60.0" prefWidth="69.0" text="del" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton prefHeight="60.0" prefWidth="69.0" text="\%" textFill="WHITE" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="dabash" onAction="#dabash_click" prefHeight="60.0" prefWidth="51.0" text="/" textFill="WHITE" GridPane.columnIndex="3">
+               <font>
+                  <Font name="System Italic" size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="clear" onAction="#clear_click" prefHeight="60.0" prefWidth="71.0" text="C" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </GridPane>
+      <JFXTextField fx:id="input" layoutY="23.0" prefHeight="62.0" prefWidth="254.0" promptText="99999" style="-fx-background-color: ffffff;">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </JFXTextField>
+      <Label fx:id="prom" layoutX="-1.0" layoutY="-2.0" prefHeight="27.0" prefWidth="260.0" style="-fx-background-color: ffffff;" text="99">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+
+    </children>
+</AnchorPane>

@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.layout.GridPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2A5058;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <GridPane>
-         <JFXButton fx:id="clockBtn" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btn-extra-styled" text="00:00:00" GridPane.columnSpan="2" GridPane.rowIndex="3">
-         <tooltip>
-            <Tooltip text="Current time" />
-         </tooltip>
-         </JFXButton>
-      </GridPane>
       <AnchorPane layoutY="85.0" prefHeight="315.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Button fx:id="first_button" layoutX="125.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #2E3348;" text="Кнопка" textFill="WHITE">
+            <Button id="but" fx:id="first_button" layoutX="125.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" stylesheets="@../res/style.css" text="Кнопка" textFill="WHITE">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Button>
+
             <TextField fx:id="first_date" layoutX="64.0" layoutY="34.0" prefHeight="25.0" prefWidth="194.0" promptText="дата с _ _._ _._ _ _ _" />
             <TextField fx:id="second_date" layoutX="64.0" layoutY="78.0" prefHeight="25.0" prefWidth="194.0" promptText="дата по _ _._ _._ _ _ _" />
             <TextField fx:id="first_date_compression_start" layoutX="399.0" layoutY="10.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
             <TextField fx:id="first_date_compression_end" layoutX="497.0" layoutY="10.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
             <TextField fx:id="first_date_compression_start1" layoutX="399.0" layoutY="38.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
             <TextField fx:id="first_date_compression_end1" layoutX="497.0" layoutY="38.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
-            <TextField fx:id="first_date_compression_end2" layoutX="497.0" layoutY="65.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
             <TextField fx:id="first_date_compression_start2" layoutX="399.0" layoutY="65.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end2" layoutX="497.0" layoutY="65.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
             <TextField fx:id="first_date_compression_start3" layoutX="399.0" layoutY="92.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
+            <TextField fx:id="first_date_compression_end3" layoutX="497.0" layoutY="93.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
             <TextField fx:id="first_date_compression_start4" layoutX="399.0" layoutY="120.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
-            <TextField fx:id="first_date_compression_end5" layoutX="497.0" layoutY="147.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
-            <TextField fx:id="first_date_compression_end3" layoutX="497.0" layoutY="92.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
-            <TextField fx:id="first_date_compression_end4" layoutX="497.0" layoutY="120.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_end4" layoutX="497.0" layoutY="121.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
+            <TextField fx:id="first_date_compression_end5" layoutX="497.0" layoutY="148.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
             <TextField fx:id="first_date_compression_start5" layoutX="399.0" layoutY="147.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
             <TextField fx:id="first_date_compression_start6" layoutX="399.0" layoutY="175.0" prefHeight="25.0" prefWidth="92.0" promptText="дата с" />
             <TextField fx:id="first_date_compression_end6" layoutX="497.0" layoutY="175.0" prefHeight="25.0" prefWidth="92.0" promptText="дата по" />
-            <Button fx:id="second_button" layoutX="454.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #2E3348;" text="Кнопка" textFill="WHITE">
+            <Button id="but" fx:id="second_button" layoutX="454.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" stylesheets="@../res/style.css" text="Кнопка" textFill="WHITE">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
@@ -51,35 +51,30 @@
                   <Font name="Segoe UI Black Italic" size="9.0" />
                </font>
             </Label>
-            <Label fx:id="first_result" layoutX="125.0" layoutY="201.0" prefHeight="47.0" prefWidth="117.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="first_result" layoutX="125.0" layoutY="201.0" prefHeight="47.0" prefWidth="117.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="second_result" layoutX="597.0" layoutY="6.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result" layoutX="597.0" layoutY="6.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="time" layoutX="13.0" layoutY="266.0" prefHeight="27.0" prefWidth="173.0" text="time" textAlignment="CENTER" textFill="#222020">
-               <font>
-                  <Font name="Segoe UI Black Italic" size="14.0" />
-               </font>
-            </Label>
             <CheckBox fx:id="box" layoutX="363.0" layoutY="14.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="16.0" text="CheckBox" />
             <CheckBox fx:id="box1" layoutX="363.0" layoutY="41.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="16.0" text="CheckBox1" />
-            <Label fx:id="second_result1" layoutX="597.0" layoutY="34.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result1" layoutX="597.0" layoutY="34.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
             <CheckBox fx:id="box2" layoutX="363.0" layoutY="69.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="16.0" text="CheckBox2" />
-            <Label fx:id="second_result2" layoutX="597.0" layoutY="61.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result2" layoutX="597.0" layoutY="61.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="result_sum" layoutX="564.0" layoutY="264.0" prefHeight="34.0" prefWidth="117.0" text="ResultALL" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="result_sum" layoutX="564.0" layoutY="264.0" prefHeight="34.0" prefWidth="117.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="14.0" />
                </font>
@@ -90,34 +85,39 @@
             <CheckBox fx:id="box6" layoutX="363.0" layoutY="179.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="16.0" text="CheckBox6" />
             <CheckBox fx:id="box7" layoutX="363.0" layoutY="207.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="16.0" text="CheckBox7" />
             <CheckBox fx:id="box8" layoutX="363.0" layoutY="235.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="16.0" text="CheckBox8" />
-            <Label fx:id="second_result3" layoutX="597.0" layoutY="88.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result3" layoutX="597.0" layoutY="88.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="second_result4" layoutX="597.0" layoutY="116.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result4" layoutX="597.0" layoutY="116.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="second_result5" layoutX="597.0" layoutY="143.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result5" layoutX="597.0" layoutY="143.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="second_result6" layoutX="597.0" layoutY="171.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result6" layoutX="597.0" layoutY="171.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="second_result7" layoutX="597.0" layoutY="199.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result7" layoutX="597.0" layoutY="199.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="second_result8" layoutX="597.0" layoutY="227.0" prefHeight="34.0" prefWidth="92.0" text="Result" textAlignment="CENTER" textFill="#222020">
+            <Label fx:id="second_result8" layoutX="597.0" layoutY="227.0" prefHeight="34.0" prefWidth="92.0" textAlignment="CENTER" textFill="#222020">
                <font>
                   <Font name="Segoe UI Black Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="time" layoutX="14.0" layoutY="268.0" prefHeight="27.0" prefWidth="92.0" text="time" textAlignment="CENTER" textFill="#222020">
+               <font>
+                  <Font name="Segoe UI Black Italic" size="14.0" />
                </font>
             </Label>
          </children></AnchorPane>
@@ -131,6 +131,24 @@
             <Font name="Segoe UI Black Italic" size="24.0" />
          </font>
       </Label>
+      <ImageView fx:id="calc" fitHeight="40.0" fitWidth="50.0" layoutX="302.0" layoutY="13.0">
+         <image>
+            <Image url="@../res/calc.jpg" />
+         </image>
+      </ImageView>
+      <Button id="but" fx:id="calc_button" layoutX="309.0" layoutY="54.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="35.0" stylesheets="@../res/style.css" text="+" textFill="WHITE">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Button>
+      <JFXButton fx:id="clockBtn" disable="true" layoutX="2.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: ;" styleClass="btn-extra-styled" text="00:00:00" textFill="WHITE">
+         <tooltip>
+            <Tooltip text="Current time" />
+         </tooltip>
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </JFXButton>
 
    </children>
 </AnchorPane>

@@ -20,6 +20,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    public static final String IMAGE_LOC = "/sample/calc2/fonts/Calculator-icon.png";
+    public static final int WIND_WIDTH = 518;
+    public static final int WIND_HEIGHT = 646;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
