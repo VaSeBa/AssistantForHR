@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import sample.calc2.DigitalWatch;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -179,7 +178,6 @@ public class Controller {
 
 
         calc_button.setOnAction(event -> {
-//            calc_button.getScene().getWindow().getOnHidden();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/calc2/calcFX.fxml"));
             try {
@@ -193,14 +191,27 @@ public class Controller {
             stage.showAndWait();
         });
 
+
+        /**
+        М0 : 12 = Ку : К0, где
+        Мо — количество месяцев, отработанных работником;
+        12 — количество месяцев в году;
+        Ку — количество дней отпуска, на которые работник получил право к моменту увольнения;
+        Ко — количество дней ежегодного оплачиваемого отпуска работника.
+        Таким образом, количество дней отпуска, заработанных работником, определяется по следующей формуле:
+        Ку = (М0 * К0 ) : 12
+         */
         first_button.setOnAction(event -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             LocalDate firstDate = LocalDate.parse(first_date.getText(), formatter);
             LocalDate secondDate = LocalDate.parse(second_date.getText(), formatter);
+            double month = ChronoUnit.MONTHS.between(firstDate, secondDate);
             long day = ChronoUnit.DAYS.between(firstDate, secondDate);
-            double dayLeaving = day / 9d;
-            BigDecimal dayLeavingBig = new BigDecimal(dayLeaving);
-            first_result.setText(dayLeavingBig.setScale(1, BigDecimal.ROUND_CEILING) + " ");
+            double  value = ((28 * month) / 12);
+//            double dayLeaving = day / 9d;
+//            BigDecimal dayLeavingBig = new BigDecimal(muns);
+//            first_result.setText(dayLeavingBig.setScale(1, BigDecimal.ROUND_CEILING) + " ");
+            first_result.setText(String.format("%.2f", value));
         });
 
         second_button.setOnAction(event -> {
@@ -209,22 +220,12 @@ public class Controller {
             if (box.isSelected()) {
                 LocalDate firstDate = LocalDate.parse(first_date_compression_start.getText(), formatter);
                 LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
-//                DAYS = ChronoUnit.DAYS.between(firstDate, secondDate);
-//                result_sum.setText(DAYS + " д.");
+
                 Period period = Period.between(firstDate, secondDate);
 
                 result_sum.setText(period.getDays() + " д. " + period.getMonths() + " м. " + period.getYears() + " л. ");
 
-//                for (day = 0, muns = 0, year = 0; DAYS > 30; DAYS = DAYS - 30) {
-//                    day = DAYS - 30;
-//                    muns++;
-//                    if (muns == 12) {
-//                        year++;
-//                        muns = 0;
-//                    }
-//                }
-//
-//                result_sum.setText(day + " d. " + muns + " m. " + year + " y." );
+
             }
 
             if (box1.isSelected()) {
@@ -232,8 +233,7 @@ public class Controller {
                 LocalDate secondDate = LocalDate.parse(first_date_compression_end.getText(), formatter);
                 LocalDate firstDate1 = LocalDate.parse(first_date_compression_start1.getText(), formatter);
                 LocalDate secondDate1 = LocalDate.parse(first_date_compression_end1.getText(), formatter);
-//                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-//                result_sum.setText(DAYS + " д.");
+
                 Period period = Period.between(firstDate, secondDate);
                 Period period1 = Period.between(firstDate1, secondDate1);
                 Period total = period.plus(period1);
@@ -242,9 +242,7 @@ public class Controller {
                 total = LocalDate.now().until(today);
                 result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
 
-//                result_sum.setText(period.plus(period1).getDays() + " д. " + period.plus(period1).getMonths() + " м. " + period.plus(period1).getYears() + " л. ");
 
-//                result_sum.setText(day + " d. " + muns + " m. " + year + " y." );
             }
 
             if (box2.isSelected()) {
@@ -263,15 +261,6 @@ public class Controller {
                 total = LocalDate.now().until(today);
                 result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
 
-
-
-//                result_sum.setText(period.plus(period1).plus(period2).getDays() +
-//                        " д. " + period.plus(period1).plus(period2).getMonths() +
-//                        " м. " + period.plus(period1).plus(period2).getYears() + " л. ");
-
-
-//                DAYS += ChronoUnit.DAYS.between(firstDate, secondDate);
-//                result_sum.setText(DAYS + " д.");
             }
 
             if (box3.isSelected()) {
@@ -294,11 +283,6 @@ public class Controller {
                 total = LocalDate.now().until(today);
                 result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
 
-
-
-//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).getDays() +
-//                        " д. " + period.plus(period1).plus(period2).plus(period3).getMonths() +
-//                        " м. " + period.plus(period1).plus(period2).plus(period3).getYears() + " л. ");
             }
 
             if (box4.isSelected()) {
@@ -324,9 +308,6 @@ public class Controller {
                 total = LocalDate.now().until(today);
                 result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
 
-//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).getDays() +
-//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).getMonths() +
-//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).getYears() + " л. ");
             }
 
             if (box5.isSelected()) {
@@ -355,9 +336,6 @@ public class Controller {
                 total = LocalDate.now().until(today);
                 result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
 
-//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).getDays() +
-//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).getMonths() +
-//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).getYears() + " л. ");
             }
 
             if (box6.isSelected()) {
@@ -387,9 +365,6 @@ public class Controller {
                 today = today.plusDays(total.getDays()).plusMonths(total.getMonths()).plusYears(total.getYears());
                 total = LocalDate.now().until(today);
                 result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
-//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).getDays() +
-//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).getMonths() +
-//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).getYears() + " л. ");
             }
 
             if (box7.isSelected()) {
@@ -423,9 +398,6 @@ public class Controller {
                 total = LocalDate.now().until(today);
                 result_sum.setText(total.getDays() + " д. " + total.getMonths() + " м. " + total.getYears() + " л. ");
 
-//                result_sum.setText(period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).getDays() +
-//                        " д. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).getMonths() +
-//                        " м. " + period.plus(period1).plus(period2).plus(period3).plus(period4).plus(period5).plus(period6).plus(period7).getYears() + " л. ");
             }
 
             if (box8.isSelected()) {
