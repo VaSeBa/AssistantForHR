@@ -1,4 +1,4 @@
-package sample.calc2;
+package sample.calculator;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;

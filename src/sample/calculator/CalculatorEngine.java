@@ -1,4 +1,4 @@
-package sample.calc2;
+package sample.calculator;
 
 import java.util.Arrays;
 import java.util.LinkedList;

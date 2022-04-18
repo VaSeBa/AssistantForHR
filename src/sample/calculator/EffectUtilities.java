@@ -1,4 +1,4 @@
-package sample.calc2;
+package sample.calculator;
 
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
