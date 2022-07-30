@@ -1,4 +1,4 @@
-# AssistantForHR V.2
+# AssistantForHR V.1
 
 Доступна для скачивания -> «AssistantForHR.exe» - https://yadi.sk/d/TB8tWUpxSRCvlQ
 
